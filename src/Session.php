@@ -326,9 +326,10 @@ class Session
      */
     protected function generateFingerprint()
     {
+        $userAgent = !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
         return hash(
             'sha256',
-            $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] . session_id()
+            $userAgent . $_SERVER['REMOTE_ADDR'] . session_id()
         );
     }
 
